@@ -34,11 +34,74 @@ body {
     margin-bottom: 20px;
     font-size: 80px;
     opacity: 0.5;
-  }
+}
+
+svg {
+    width: 64px;
+    height: 64px;
+}
+  
   
 .todo-list {
     list-style: none;
     margin-bottom: 20px;
+}
+
+.todo-item {
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+  
+.todo-item span {
+    flex-grow: 1;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 22px;
+}
+  
+.done span {
+    text-decoration: line-through;
+}
+  
+input[type="checkbox"] {
+display: none;
+}
+  
+.tick {
+width: 30px;
+height: 30px;
+border: 3px solid #333;
+border-radius: 50%;
+display: inline-flex;
+justify-content: center;
+align-items: center;
+cursor: pointer;
+}
+  
+.tick::before {
+content: '✓';
+font-size: 20px;
+display: none;
+}
+
+.done .tick::before {
+display: inline;
+}
+
+.delete-todo {
+border: none;
+background-color: transparent;
+outline: none;
+cursor: pointer;
+}
+
+.delete-todo svg {
+width: 30px;
+height: 30px;
+pointer-events: none;
 }
 
 form {
@@ -51,5 +114,5 @@ form {
     width: 100%;
     padding: 10px;
     border-radius: 7px;
-    border: 2px solid #333;
+    border: 1px solid #333;
   }
