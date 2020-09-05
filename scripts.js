@@ -44,6 +44,7 @@ function addTodo(text) {
 
   todoItems.push(todo);
   console.log(todoItems);
+  renderTodo(todo);
 }
 
 // Select the form element
@@ -56,7 +57,7 @@ form.addEventListener('submit', event => {
   const input = document.querySelector('.js-todo-input');
 
   // Get the value of the input and remove whitespace
-  const texttodoItems = input.value.trim();
+  const text = input.value.trim();
   if (text !== '') {
     addTodo(text);
     input.value = '';
