@@ -1,8 +1,12 @@
 // This is the array that will hold the todo list items
 let todoItems = [];
 
+
 // render a todo item in the todo items list
 function renderTodo(todo) {
+
+  localStorage.setItem('todoItems', JSON.stringify(todoItems));
+  
   const list = document.querySelector('.js-todo-list');
   // select the current todo item in the DOM
   const item = document.querySelector(`[data-key='${todo.id}']`);
@@ -39,7 +43,7 @@ function renderTodo(todo) {
 
 
 // This function will create a new todo object based on the
-// text that was entered in the text input, and push it into
+// text that was entered in the text input form, and push it into
 // the `todoItems` array
 function addTodo(text) {
   const todo = {
@@ -49,7 +53,7 @@ function addTodo(text) {
   };
 
   todoItems.push(todo);
-  console.log(todoItems);
+  // console.log(todoItems);
   renderTodo(todo);
 }
 
@@ -73,7 +77,7 @@ form.addEventListener('submit', event => {
 });
 
 
-// Select the entire list
+// Select the entire list and based on what is clicked, will add or delete a todo item
 const list = document.querySelector('.js-todo-list');
 // Add a click event listener to the list and its children
 list.addEventListener('click', event => {
@@ -108,9 +112,21 @@ function deleteTodo(key) {
   // and a `deleted` property which is set to true
   const todo = {
     deleted: true,
-    ...todoItems[index]
+    ...todoItems[index]  // spread operator unpacks all other attributes of todo object
   };
+  console.log(todo);
   // remove the todo item from the array by filtering it out
   todoItems = todoItems.filter(item => item.id !== Number(key));
   renderTodo(todo);
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const ref = localStorage.getItem('todoItemsRef');
+  if (ref) {
+    todoItems = JSON.parse(ref);
+    todoItems.forEach(t => {
+      renderTodo(t);
+    });
+  }
+});
