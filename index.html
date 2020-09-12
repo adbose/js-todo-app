@@ -10,7 +10,14 @@
     <div class="container">
         <h1 class="app-title">js todo app</h1>
         <ul class="todo-list js-todo-list"></ul>
-    
+
+        <!-- Begin Empty State -->
+        <div class="empty-state">
+          <svg class="checklist-icon"><use href="#checklist-icon"></use></svg>
+          <h2 class="empty-state__title">No todos left</h2>
+          <p class="empty-state__description">Add a new todo</p>
+        </div>
+        <!-- End Empty State-->
         <form class="js-form">
           <input autofocus type="text" aria-label="Enter a new todo item" placeholder="E.g. Build a todo list app" class="js-todo-input">
         </form>
